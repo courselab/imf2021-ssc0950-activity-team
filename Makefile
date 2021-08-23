@@ -1,13 +1,10 @@
-all: libcypher.so compile clean
+decode: bypass.o decode.o libcypher.so
+	gcc -m32 bypass.o decode.o -L. -Wl,-rpath='$$ORIGIN' -lcypher -o decode
 
-compile:
-	@gcc decode.o -o decode -lm
+bypass.o: bypass.c
+	gcc -m32 -c $< -o $@
 
-decode.o:
-	@gcc -Wall -shared -o decode.o
 
-run:
-	@decode -d -k ABC crypt.dat decodedcrypt
-
-tar:
-	@gzip  -r decode *.o *.dat Makefile
+.PHONY: clean
+clean:
+	rm -r decode
