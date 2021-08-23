@@ -1,7 +1,0 @@
-gcc -m32 decode.o libcypher.so -o decode
-
-LD_LIBRARY_PATH=/home/mathsantos/Documentos/monaco/imf2021-ssc0950-activity-team-main/libcypher:$LD_LIBRARY_PATH
-
-export LD_LIBRARY_PATH=/home/mathsantos/Documentos/monaco/imf2021-ssc0950-activity-team-main/libcypher:$LD_LIBRARY_PATH
-
-./decode -d -k ABC input_file output_file
